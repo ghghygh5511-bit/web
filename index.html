@@ -2,9 +2,21 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>موقعي</title>
+  <title>موقع الزائر</title>
 </head>
 <body>
-  <h1>الموقع يعمل</h1>
+  <h2>معلومات الزائر</h2>
+  <pre id="info">جارٍ التحميل...</pre>
+
+  <script>
+    fetch("https://ipapi.co/json/")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("info").innerText =
+          "IP: " + data.ip + "\n" +
+          "الدولة: " + data.country_name + "\n" +
+          "المدينة: " + data.city;
+      });
+  </script>
 </body>
 </html>
